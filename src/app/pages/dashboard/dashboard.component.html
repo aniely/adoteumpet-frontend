@@ -1,0 +1,98 @@
+<div class="wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <!-- <h1 class="m-0"> Adote um Pet</h1> -->
+                </div>
+                <!-- /.col
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Página inicial/</a></li>
+                    </ol> 
+                </div>  /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+        <div class="container">
+            <div class="card col-md-12">
+                <div class="card-body">
+
+                    <form action="">
+                        <div class="row">
+
+                            <img src="assets/img/bichos.png" class="brand-image">
+                            <div class="form-group col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-5">
+
+                                <label class="control-label">Espécie</label>
+                                <ng-select2 [data]="especieData" [options]="options2" [placeholder]="'Selecione'"
+                                    class="col-md-12"></ng-select2>
+
+                            </div>
+                            <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12 mt-5">
+
+                                <label class="control-label"> Sexo</label>
+                                <ng-select2 [data]="sexoData" [options]="options3" [placeholder]="'Selecione'"
+                                    class="col-md-12"></ng-select2>
+
+                            </div>
+                            <div class="form-group  col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-5">
+
+                                <label class="control-label">Cidade</label>
+                                <ng-select2 [data]="cidadeData" [placeholder]="'Selecione'" [options]="options"
+                                    class="col-md-12">
+                                </ng-select2>
+
+                            </div>
+                            <button type="button" class="btn btn-warning font-weight-bold h-50" style="
+                            margin-top: 7.5%;
+                        ">Pesquisar</button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="assets/img/cisso.jpeg" class="card-img-top rounded" alt="..." width="150"
+                            height="150">
+                        <div class="card-body">
+                            <h5 class="card-title">Cisso | <small>Rio de Janeiro, RJ</small></h5>
+                            <br>
+                            <span class="badge rounded-pill bg-warning">Macho</span>&nbsp;
+                            <span class="badge rounded-pill bg-warning">Vive bem em apartamento</span>
+                            <br>
+                            <button type="button"
+                                class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img src="assets/img/ellora.jpeg" class="card-img-top rounded" alt="..." width="150"
+                            height="150">
+                        <div class="card-body">
+                            <h5 class="card-title">Ellora | <small>Rio de Janeiro, RJ</small></h5>
+                            <br>
+                            <span class="badge rounded-pill bg-warning">Fêmea</span>&nbsp;
+                            <span class="badge rounded-pill bg-warning">Brava</span>&nbsp;
+                            <br>
+                            <button type="button"
+                                class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.content -->
+    </div>
