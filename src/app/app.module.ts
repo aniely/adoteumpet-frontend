@@ -33,11 +33,16 @@ import {MenuItemComponent} from './components/menu-item/menu-item.component';
 import {DropdownComponent} from './components/dropdown/dropdown.component';
 import {DropdownMenuComponent} from './components/dropdown/dropdown-menu/dropdown-menu.component';
 import { NgSelect2Module } from 'ng-select2';
-//import { NgSelectModule, NgSelectConfig } from '@ng-select/ng-select';
+//import { NgxMaskModule, IConfig } from 'ngx-mask';
+
 
 import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localeEn, 'en-EN');
+
+//const maskConfig: Partial<IConfig> = {
+//    validation: false,
+ // };
 
 @NgModule({
     declarations: [
@@ -72,6 +77,7 @@ registerLocaleData(localeEn, 'en-EN');
         ReactiveFormsModule,
         NgSelect2Module,
         BrowserAnimationsModule,
+    //    NgxMaskModule.forRoot(maskConfig),
         FormsModule,
         ToastrModule.forRoot({
             timeOut: 3000,
@@ -82,6 +88,7 @@ registerLocaleData(localeEn, 'en-EN');
     providers: [],
     bootstrap: [AppComponent]
 })
+
 export class AppModule {
    // constructor(private config: NgSelectConfig) {
       //  this.config.notFoundText = 'Custom not found';

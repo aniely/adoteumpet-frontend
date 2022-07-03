@@ -1,92 +1,95 @@
 import {Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
-import { ApiService } from '@services/api.service';
-
+import { AnimalService } from '@services/animal.service';
+import { CidadeService } from '@services/cidade.service';
+import { EspecieService } from '@services/especie.service';
+import { Pesquisa } from '@models/pesquisa.model';
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  animais: any[];
-  constructor(private apiService: ApiService) {}
+  animais: any[] = new Array();
+  cidades: any[] = new Array();
+  especies: any[] = new Array();
+  constructor(private animalService: AnimalService, private cidadeService: CidadeService, private especieService: EspecieService) {}
    
-        public cidadeData: Array<Select2OptionData>;
+        public cidadeData:  Array<Select2OptionData>;
         public especieData: Array<Select2OptionData>;
         public sexoData: Array<Select2OptionData>;
 
         public options: Options;
         public options2: Options;
         public options3: Options;
+
+        pesquisa: any = new Pesquisa();
       
         ngOnInit() {
-         
-          this.apiService.buscarAnimais()
-          .subscribe(r => {
-            this.animais = r;
-            
+          this.animalService.buscarAnimais().subscribe(animais => {
+            this.animais = animais;
           });
-
-
-          this.especieData = [
-            {
-              id: '1',
-              text: 'Cachorro'
-            },
-            {
-              id: '2',
-              text: 'Gato'
-            },
-           
-          ];
-
+          this.cidadeService.buscarCidades().subscribe(cidades => {
+            cidades.map(item => {
+              this.cidades.push({
+                id: item.id,
+                text: item.nome
+              })
+            });
+            this.cidadeData = this.cidades;
+          });
+          this.especieService.buscarEspecies().subscribe(especies => {
+            especies.map(item => {
+              this.especies.push({
+                id: item.id,
+                text: item.nome
+              })
+            });
+            this.especieData = this.especies;
+          });
+  
           this.sexoData = [
             {
-              id: '1',
+              id: 'F',
               text: 'Fêmea'
             },
             {
-              id: '2',
+              id: 'M',
               text: 'Macho'
             },
           ];
+ 
 
-          this.cidadeData = [
-            {
-              id: '1',
-              text: 'Campos dos Goytacazes'
-            },
-            {
-              id: '2',
-              text: 'São João da Barra'
-            },                     
-          ];
-      
           this.options = {
             multiple: true,
             closeOnSelect: true,
             allowClear: true,
-            maximumSelectionLength: 3
-         
+           maximumSelectionLength: 1
           };
-
           this.options2 = {
             multiple: true,
             closeOnSelect: true,
             allowClear: true,
-            maximumSelectionLength: 1
-            
+            maximumSelectionLength: 1 
           };
 
           this.options3 = {
             multiple: true,
-            closeOnSelect: true,
+           closeOnSelect: true,
             allowClear: true,
-            maximumSelectionLength: 1
-            
+            maximumSelectionLength: 1   
           };
         }
+
+
+        pesquisar(){
+          this.animalService.pesquisar(this.pesquisa).subscribe(animais => {
+            this.animais = animais;
+          });
+        }
+
+    
       }
       
  

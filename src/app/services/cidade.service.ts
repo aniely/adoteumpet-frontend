@@ -3,16 +3,16 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
-export class ApiService {
+export class CidadeService {
 
-    baseURL: string = "http://localhost:8082/animais";
+    baseURL: string = "http://localhost:8082/cidades";
 
 
     constructor(private http: HttpClient) { }
 
 
-    buscarAnimais(): Observable<any> {
-        return this.http.get(this.baseURL)
+    buscarCidades(): Observable<any> {
+        return this.http.get(this.baseURL);
     }
 
 }

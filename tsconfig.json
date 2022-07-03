@@ -23,6 +23,7 @@
             "@modules/*": ["app/modules/*"],
             "@pages/*": ["app/pages/*"],
             "@services/*": ["app/services/*"],
+            "@models/*": ["app/models/*"],
             "@/*": ["app/*"]
         }
     },

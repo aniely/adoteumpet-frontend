@@ -29,43 +29,61 @@
                 </div>
             </div>
             <div class="card-body">
-               
-                    <div class="form-group col-md-4">
+               <div class="row">
+                <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" placeholder="Nome">
+                        <input type="text" class="form-control col-md-12" id="nome" placeholder="Nome">
                     </div>
-                    <div class="form-group col-md-2">
-                        <label for="idade">Idade</label>
-                        <input type="number" class="form-control" id="idade">
+                    <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                        <label for="nome">Data de nascimento</label>
+                        <input type="text" class="form-control col-md-12" id="data"   placeholder="Data de nascimento">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label> Sexo</label><br>
-                        <!-- <ng-select [items]="sexoData" class="col-md-4"></ng-select> -->
+                    <div class="form-group col-lg-2 col-md-6 col-sm-12 col-xs-12">
+                        <label> Sexo</label>
+                      <ng-select2 [placeholder]="'Selecione'"   class="col-md-12"></ng-select2> 
                     </div>
                 
-                <!--    <div class="form-group col-md-4">
-                        <label> Espécie</label><br>
-                        <ng-select2 [data]="sexoData" [options]="optionsSexo"  class="col-md-4"></ng-select2>
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label> Estado</label>
+                        <ng-select2 [placeholder]="'Selecione'" class="col-md-12"></ng-select2>
                     </div>
-                    <div class="form-group col-md-4">
-                        <label>Raça</label><br>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-4"></ng-select2>
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label> Cidade</label>
+                        <ng-select2 [placeholder]="'Selecione'" class="col-md-12"></ng-select2>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label> Características</label><br>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-6"></ng-select2>
+                </div>
+                <div class="row">
+                    
+                    <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                        <label> Porte</label>
+                        <ng-select2 [placeholder]="'Selecione'" class="col-md-12"></ng-select2>
                     </div>
-               
-                    <div class="form-group col-md-4">
-                        <label> Estado</label><br>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-4"></ng-select2>
+
+                    <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                        <label for="nome">Cor</label>
+                        <input type="text" class="form-control col-md-12" id="cor" placeholder="Cor">
                     </div>
-                    <div class="form-group col-md-4">
-                        <label> Cidade</label><br>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-4"></ng-select2>
+
+                    <div class="form-group col-lg-6 col-md-8 col-sm-12 col-xs-12">
+                        <label for="nome">Descrição</label>
+                        <input type="text" class="form-control col-md-12" id="descricao" placeholder="Descrição">
+                    </div>
+                </div>
+                <div class="row">
                 
-                </div> -->
- 
+                    <div class="form-group">
+                        <label for="exampleInputFile">Fotos</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile">
+                                <label class="custom-file-label" for="exampleInputFile">Escolha uma imagem</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

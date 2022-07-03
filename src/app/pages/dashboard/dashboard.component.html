@@ -4,6 +4,7 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
+                  
                     <!-- <h1 class="m-0"> Adote um Pet</h1> -->
                 </div>
                 <!-- /.col
@@ -30,28 +31,31 @@
                             <div class="form-group col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-5">
 
                                 <label class="control-label">Espécie</label>
-                                <ng-select2 [data]="especieData" [options]="options2" [placeholder]="'Selecione'"
-                                    class="col-md-12"></ng-select2>
+                                <ng-select2 [data]="especieData" [options]="options2" [placeholder]="'Selecione'" [(ngModel)]="pesquisa.idEspecie"
+                                    class="col-md-12" name="especie"></ng-select2>
 
                             </div>
                             <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12 mt-5">
 
                                 <label class="control-label"> Sexo</label>
-                                <ng-select2 [data]="sexoData" [options]="options3" [placeholder]="'Selecione'"
-                                    class="col-md-12"></ng-select2>
+                                <ng-select2 [data]="sexoData" [options]="options3" [placeholder]="'Selecione'" [(ngModel)]="pesquisa.sexo"
+                                    class="col-md-12" name="sexo"></ng-select2>
 
                             </div>
+                     
+                           
+                            
                             <div class="form-group  col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-5">
-
                                 <label class="control-label">Cidade</label>
-                                <ng-select2 [data]="cidadeData" [placeholder]="'Selecione'" [options]="options"
-                                    class="col-md-12">
+                                <ng-select2 [data]="cidadeData" [placeholder]="'Selecione'" [options]="options" [(ngModel)]="pesquisa.idCidade"
+                                    class="col-md-12" name="cidade">
                                 </ng-select2>
 
                             </div>
                             <button type="button" class="btn btn-warning font-weight-bold h-50" style="
                             margin-top: 7.5%;
-                        ">Pesquisar</button>
+                        " (click)="pesquisar()">Pesquisar</button>
+                        
                         </div>
 
                     </form>
@@ -59,14 +63,14 @@
 
             </div>
 
-
-            <div class="row">
+           <!-- <div class="row">
                 <div class="col-md-3">
-                    <div class="card">
+                    <div class="card"  *ngFor="let animal of animais">
                         <img src="assets/img/cisso.jpeg" class="card-img-top rounded" alt="..." width="150"
                             height="150">
                         <div class="card-body">
-                            <h5 class="card-title">Cisso | <small>Rio de Janeiro, RJ</small></h5>
+                            <h5 class="card-title">
+                                {{animal.nome}} | <small>Rio de Janeiro, RJ</small></h5>
                             <br>
                             <span class="badge rounded-pill bg-warning">Macho</span>&nbsp;
                             <span class="badge rounded-pill bg-warning">Vive bem em apartamento</span>
@@ -75,16 +79,16 @@
                                 class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-md-3">
-                    <div class="card">
+                    <div class="card"  *ngFor="let animal of animais">
                         <img src="assets/img/ellora.jpeg" class="card-img-top rounded" alt="..." width="150"
                             height="150">
                         <div class="card-body">
-                            <h5 class="card-title">Ellora | <small>Rio de Janeiro, RJ</small></h5>
+                            <h5 class="card-title">{{animal.nome}} | <small>{{animal.cidade.nome}}, {{animal.cidade.estado.sigla}} </small></h5>
                             <br>
-                            <span class="badge rounded-pill bg-warning">Fêmea</span>&nbsp;
-                            <span class="badge rounded-pill bg-warning">Brava</span>&nbsp;
+                            <span class="badge rounded-pill bg-warning">{{animal.genero == 'F' ? 'Fêmea' : 'Macho' }}</span>&nbsp;
+                            <span class="badge rounded-pill bg-warning">{{animal.descricao}}</span>&nbsp;
                             <br>
                             <button type="button"
                                 class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
