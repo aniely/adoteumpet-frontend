@@ -25,7 +25,6 @@ export class AnimalService {
 
     pesquisar(pesquisa: Pesquisa): Observable<any[]> {
         let params = new HttpParams();
-        debugger;
         if (pesquisa.idEspecie && pesquisa.idEspecie.length > 0) {
             params = params.set('idEspecie', pesquisa.idEspecie[0]);
         }
@@ -36,6 +35,11 @@ export class AnimalService {
             params = params.set('sexo', pesquisa.sexo[0]);
         }
         return this.http.get<any[]>(this.baseURL + '/pesquisar', {params});
+   }
+
+   
+   cadastrar(animal: any): Observable<any> {
+    return this.http.post<any>(this.baseURL, { animal });
    }
 
 }

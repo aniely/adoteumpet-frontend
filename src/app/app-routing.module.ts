@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {MainComponent} from '@modules/main/main.component';
-import {BlankComponent} from '@pages/blank/blank.component';
+import {CadastroComponent} from '@pages/cadastro/cadastro.component';
 import {LoginComponent} from '@modules/login/login.component';
 import {ProfileComponent} from '@pages/profile/profile.component';
 import {RegisterComponent} from '@modules/register/register.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
             },
             {
                 path: 'blank',
-                component: BlankComponent
+                component: CadastroComponent
             },
             {
                 path: 'sub-menu-1',
@@ -35,7 +35,7 @@ const routes: Routes = [
             },
             {
                 path: 'sub-menu-2',
-                component: BlankComponent
+                component: CadastroComponent
             },
             {
                 path: '',

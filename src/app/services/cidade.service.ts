@@ -14,5 +14,12 @@ export class CidadeService {
     buscarCidades(): Observable<any> {
         return this.http.get(this.baseURL);
     }
+    buscarCidadesPorEstado(idEstado: number): Observable<any> {
+        let params = new HttpParams();
+        params = params.set('idEstado', idEstado);
+        
+        return this.http.get<any[]>(this.baseURL + '/pesquisarPorEstado', {params});
+
+    }
 
 }

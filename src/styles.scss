@@ -8,13 +8,25 @@
 @import '~admin-lte/plugins/fontawesome-free/css/all.min.css';
 @import '~admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css';
 @import '~admin-lte/dist/css/adminlte.min.css';
+@import '~ngx-toastr/toastr.css';
 
-@import '~ngx-toastr/toastr';
+.toast-bootstrap-compatibility-fix {
+    opacity:1 !important;
+  }
 
+  #toast-container > div {
+    opacity:1 !important;
+}
+  .toast-success{background-color:#51A351!important;}
+.toast-error{background-color:#BD362F!important;}
+.toast-info{background-color:#2F96B4!important;}
+.toast-warning{background-color:#F89406!important;}
+ 
 body {
     width: 100vw;
     height: 100vh;
 }
+
 
 .navbar-warning {
     background-color: #fac364 !important;
@@ -182,4 +194,4 @@ body {
 
 .form-control {
     border: 1px solid #aaaaaa !important;
-}
+} 

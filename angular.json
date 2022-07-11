@@ -24,9 +24,13 @@
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "tsconfig.app.json",
                         "assets": ["src/favicon1.ico", "src/assets"],
-                        "styles": ["src/styles.scss",
+                        "styles": [
                             
-                            "node_modules/select2/dist/css/select2.min.css"
+                            "node_modules/select2/dist/css/select2.min.css",
+                            "./node_modules/ngx-toastr/toastr.css",
+                            "./node_modules/ngx-toastr/toastr-old.css",
+                            "src/styles.scss"
+
                         ],
                            
                   

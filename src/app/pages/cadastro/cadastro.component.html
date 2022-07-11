@@ -28,45 +28,65 @@
 
                 </div>
             </div>
+            <form [formGroup]="cadastroForm" (ngSubmit)="onFormSubmit()">
+
             <div class="card-body">
                <div class="row">
                 <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <label for="nome">Nome</label>
-                        <input type="text" class="form-control col-md-12" id="nome" placeholder="Nome">
-                    </div>
-                    <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
-                        <label for="nome">Data de nascimento</label>
-                        <input type="text" class="form-control col-md-12" id="data"   placeholder="Data de nascimento">
+                        <input type="text" formControlName="nome"  class="form-control col-md-12" id="nome" placeholder="Nome">
+                        <span *ngIf="isSubmited && nome.invalid" class="text-danger">Nome é obrigatório</span>
+
                     </div>
                     <div class="form-group col-lg-2 col-md-6 col-sm-12 col-xs-12">
                         <label> Sexo</label>
-                      <ng-select2 [placeholder]="'Selecione'"   class="col-md-12"></ng-select2> 
+                      <ng-select2 [data]="sexoData" formControlName="sexo" [placeholder]="'Selecione'" 
+                      class="col-md-12" name="sexo"></ng-select2>
+                      <span *ngIf="isSubmited && sexo.invalid" class="text-danger">Sexo é obrigatório</span>
                     </div>
                 
                     <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
                         <label> Estado</label>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-12"></ng-select2>
+                        <ng-select2 [placeholder]="'Selecione'"  (valueChanged)="onChangeEstado($event)" [data]="estadoData" formControlName="estado" class="col-md-12"></ng-select2>
+                        <span *ngIf="isSubmited && estado.invalid" class="text-danger">Estado é obrigatório</span>
+
                     </div>
-                    <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
-                        <label> Cidade</label>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-12"></ng-select2>
-                    </div>
+                    
                 </div>
                 <div class="row">
-                    
+                    <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                        <label> Cidade</label>
+                        <ng-select2 [placeholder]="'Selecione'" [data]="cidadeData"   formControlName="cidade" class="col-md-12"></ng-select2>
+                        <span *ngIf="isSubmited && cidade.invalid" class="text-danger">Cidade é obrigatório</span>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                    <label class="control-label">Espécie</label>
+                    <ng-select2 [data]="especieData" formControlName="especie" [placeholder]="'Selecione'" 
+                        class="col-md-12" name="especie"></ng-select2>
+                        <span *ngIf="isSubmited && especie.invalid" class="text-danger">Espécie é obrigatório</span>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
+                        <label class="control-label">Raça</label>
+                        <ng-select2 [data]="racaData" formControlName="raca" [placeholder]="'Selecione'"
+                            class="col-md-12" name="especie"></ng-select2>
+                            <span *ngIf="isSubmited && raca.invalid" class="text-danger">Raça é obrigatório</span>
+                        </div>
                     <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
                         <label> Porte</label>
-                        <ng-select2 [placeholder]="'Selecione'" class="col-md-12"></ng-select2>
+                        <ng-select2 [placeholder]="'Selecione'" [data]="porteData"  formControlName="porte" class="col-md-12"></ng-select2>
+                        <span *ngIf="isSubmited && porte.invalid" class="text-danger">Porte é obrigatório</span>
                     </div>
 
                     <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
                         <label for="nome">Cor</label>
-                        <input type="text" class="form-control col-md-12" id="cor" placeholder="Cor">
+                        <input type="text" class="form-control col-md-12" id="cor"  formControlName="cor" placeholder="Cor">
+                        <span *ngIf="isSubmited && cor.invalid" class="text-danger">Cor é obrigatório</span>
                     </div>
 
                     <div class="form-group col-lg-6 col-md-8 col-sm-12 col-xs-12">
                         <label for="nome">Descrição</label>
-                        <input type="text" class="form-control col-md-12" id="descricao" placeholder="Descrição">
+                        <input type="text" class="form-control col-md-12"  formControlName="descricao" id="descricao" placeholder="Descrição">
+                        <span *ngIf="isSubmited && descricao.invalid" class="text-danger">Descrição é obrigatório</span>
                     </div>
                 </div>
                 <div class="row">
@@ -87,8 +107,9 @@
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
-            <button type="button" class="btn btn-warning font-weight-bold">Salvar</button>
+            <button type="submit" class="btn btn-warning font-weight-bold">Salvar</button>
         </div>
+        </form>
         <!-- /.card-footer-->
     </div>
     </div>

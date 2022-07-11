@@ -3,22 +3,22 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {DebugElement} from '@angular/core';
 
-import {BlankComponent} from './blank.component';
+import {CadastroComponent} from './cadastro.component';
 
-describe('BlankComponent', () => {
-    let component: BlankComponent;
-    let fixture: ComponentFixture<BlankComponent>;
+describe('CadastroComponent', () => {
+    let component: CadastroComponent;
+    let fixture: ComponentFixture<CadastroComponent>;
 
     beforeEach(
         waitForAsync(() => {
             TestBed.configureTestingModule({
-                declarations: [BlankComponent]
+                declarations: [CadastroComponent]
             }).compileComponents();
         })
     );
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(BlankComponent);
+        fixture = TestBed.createComponent(CadastroComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

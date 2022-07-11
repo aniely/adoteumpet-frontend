@@ -5,6 +5,8 @@ import { AnimalService } from '@services/animal.service';
 import { CidadeService } from '@services/cidade.service';
 import { EspecieService } from '@services/especie.service';
 import { Pesquisa } from '@models/pesquisa.model';
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
@@ -14,7 +16,11 @@ export class DashboardComponent implements OnInit {
   animais: any[] = new Array();
   cidades: any[] = new Array();
   especies: any[] = new Array();
-  constructor(private animalService: AnimalService, private cidadeService: CidadeService, private especieService: EspecieService) {}
+  
+  constructor(private animalService: AnimalService, 
+    private cidadeService: CidadeService,
+     private especieService: EspecieService,
+     private toastr: ToastrService) {}
    
         public cidadeData:  Array<Select2OptionData>;
         public especieData: Array<Select2OptionData>;
@@ -86,7 +92,7 @@ export class DashboardComponent implements OnInit {
         pesquisar(){
           this.animalService.pesquisar(this.pesquisa).subscribe(animais => {
             this.animais = animais;
-          });
+          }); 
         }
 
     

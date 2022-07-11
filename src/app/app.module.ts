@@ -9,7 +9,7 @@ import {LoginComponent} from '@modules/login/login.component';
 import {HeaderComponent} from '@modules/main/header/header.component';
 import {FooterComponent} from '@modules/main/footer/footer.component';
 import {MenuSidebarComponent} from '@modules/main/menu-sidebar/menu-sidebar.component';
-import {BlankComponent} from '@pages/blank/blank.component';
+import {CadastroComponent} from '@pages/cadastro/cadastro.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ProfileComponent} from '@pages/profile/profile.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -33,12 +33,13 @@ import {MenuItemComponent} from './components/menu-item/menu-item.component';
 import {DropdownComponent} from './components/dropdown/dropdown.component';
 import {DropdownMenuComponent} from './components/dropdown/dropdown-menu/dropdown-menu.component';
 import { NgSelect2Module } from 'ng-select2';
-//import { NgxMaskModule, IConfig } from 'ngx-mask';
+//import { NgxMaskModule } from 'ngx-mask';
+
 
 
 import { FormsModule } from '@angular/forms';
 
-registerLocaleData(localeEn, 'en-EN');
+//registerLocaleData(localeEn, 'en-EN');
 
 //const maskConfig: Partial<IConfig> = {
 //    validation: false,
@@ -52,7 +53,7 @@ registerLocaleData(localeEn, 'en-EN');
         HeaderComponent,
         FooterComponent,
         MenuSidebarComponent,
-        BlankComponent,
+        CadastroComponent,
         ProfileComponent,
         RegisterComponent,
         DashboardComponent,
@@ -77,12 +78,12 @@ registerLocaleData(localeEn, 'en-EN');
         ReactiveFormsModule,
         NgSelect2Module,
         BrowserAnimationsModule,
-    //    NgxMaskModule.forRoot(maskConfig),
+      //  NgxMaskModule.forRoot(),
+
         FormsModule,
         ToastrModule.forRoot({
-            timeOut: 3000,
-            positionClass: 'toast-top-right',
-            preventDuplicates: true
+            timeOut: 4000,
+       
         })
     ],
     providers: [],
