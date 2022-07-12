@@ -9,6 +9,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {AppService} from '@services/app.service';
 
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         private renderer: Renderer2,
         private toastr: ToastrService,
         private appService: AppService
+        
     ) {}
 
     ngOnInit() {
@@ -48,17 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
     }
 
-    async loginByGoogle() {
-        this.isGoogleLoading = true;
-        await this.appService.loginByGoogle();
-        this.isGoogleLoading = false;
-    }
-
-    async loginByFacebook() {
-        this.isFacebookLoading = true;
-        await this.appService.loginByFacebook();
-        this.isFacebookLoading = false;
-    }
+    
 
     ngOnDestroy() {
         this.renderer.removeClass(

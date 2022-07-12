@@ -1,9 +1,9 @@
-<div class="card card-outline card-primary">
+<div class="card card-outline card-warning">
     <div class="card-header text-center">
-        <a [routerLink]="['/']" class="h1"><b>Admin</b>LTE</a>
+        <a [routerLink]="['/']" class="h1"><b>Adote um Pet</b></a>
     </div>
     <div class="card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg"></p>
 
         <form [formGroup]="loginForm" (ngSubmit)="loginByAuth()">
             <div class="input-group mb-3">
@@ -36,7 +36,7 @@
                 <div class="col-7">
                     <div class="icheck-primary">
                         <input type="checkbox" id="remember" />
-                        <label for="remember"> Remember Me </label>
+                        <label for="remember"> Lembrar de mim </label>
                     </div>
                 </div>
                 <!-- /.col -->
@@ -47,42 +47,20 @@
                         [loading]="isAuthLoading"
                         [disabled]="isFacebookLoading || isGoogleLoading"
                     >
-                        Sign In
+                        Entrar
                     </app-button>
                 </div>
                 <!-- /.col -->
             </div>
         </form>
 
-        <div class="social-auth-links text-center mb-3">
-            <app-button
-                class="mb-2"
-                [block]="true"
-                [loading]="isFacebookLoading"
-                [disabled]="isAuthLoading || isGoogleLoading"
-                [icon]="'facebook'"
-                (click)="loginByFacebook()"
-            >
-                Sign in using Facebook
-            </app-button>
-            <app-button
-                [block]="true"
-                [loading]="isGoogleLoading"
-                [disabled]="isAuthLoading || isFacebookLoading"
-                [icon]="'google'"
-                [color]="'danger'"
-                (click)="loginByGoogle()"
-            >
-                Sign in using Google+
-            </app-button>
-        </div>
-
+        
         <p class="mb-1">
-            <a [routerLink]="['/forgot-password']">I forgot my password</a>
+            <a [routerLink]="['/forgot-password']">Esqueci a senha</a>
         </p>
         <p class="mb-0">
             <a [routerLink]="['/register']" class="text-center">
-                Register a new membership
+                Faça seu cadastro
             </a>
         </p>
     </div>

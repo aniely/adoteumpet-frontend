@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group col-lg-2 col-md-4 col-sm-12 col-xs-12">
                     <label class="control-label">Espécie</label>
-                    <ng-select2 [data]="especieData" formControlName="especie" [placeholder]="'Selecione'" 
+                    <ng-select2 [data]="especieData" formControlName="especie" (valueChanged)="onChangeEspecie($event)" [placeholder]="'Selecione'" 
                         class="col-md-12" name="especie"></ng-select2>
                         <span *ngIf="isSubmited && especie.invalid" class="text-danger">Espécie é obrigatório</span>
                     </div>

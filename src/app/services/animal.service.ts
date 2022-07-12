@@ -17,10 +17,8 @@ export class AnimalService {
         return this.http.get(this.baseURL);
     }
  
-        //let headers = new Headers();
-       // headers.append('Content-Type', 'application/json');
-      //  headers.append('projectid', this.id);
-      //headers: headers,
+       
+      
  
 
     pesquisar(pesquisa: Pesquisa): Observable<any[]> {
@@ -39,7 +37,12 @@ export class AnimalService {
 
    
    cadastrar(animal: any): Observable<any> {
-    return this.http.post<any>(this.baseURL, { animal });
+    
+    let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token') });
+    let options = { headers: headers };
+    return this.http.post<any>(this.baseURL,  animal, options);
    }
 
 }

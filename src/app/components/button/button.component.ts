@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class ButtonComponent {
     @Input() type: string = 'button';
     @Input() block: boolean = false;
-    @Input() color: string = 'primary';
+    @Input() color: string = 'warning';
     @Input() disabled: boolean = false;
     @Input() loading: boolean = false;
     @Input() icon: string = null;

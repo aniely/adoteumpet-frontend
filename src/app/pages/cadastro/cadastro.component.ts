@@ -33,7 +33,7 @@ export class CadastroComponent implements OnInit {
 
   public formControl = new FormControl();
 
-  animal: Animal;
+  animal: Animal = new Animal();
 
   public cidadeData: Array<Select2OptionData>;
   public especieData: Array<Select2OptionData>;
@@ -50,6 +50,7 @@ export class CadastroComponent implements OnInit {
   estados: any[] = new Array();
   cidades: any[] = new Array();
   especies: any[] = new Array();
+  racas: any[] = new Array();
   public value: string;
 
   cadastroForm = new FormGroup({
@@ -171,6 +172,22 @@ export class CadastroComponent implements OnInit {
     }
   }
 
+  onChangeEspecie(idEspecie) {
+    if (idEspecie) {
+      this.racaService.buscarPorEspecie(idEspecie).subscribe(racas => {
+        this.racas = [];
+        racas.map(item => {
+          this.racas.push({
+            id: item.id,
+            text: item.nome
+          })
+        });
+        this.racaData = this.racas;
+      });
+    }
+  }
+  
+
   onFormSubmit() {
 
     this.isSubmited = true;
@@ -181,10 +198,9 @@ export class CadastroComponent implements OnInit {
       this.animal.idCidade = this.cidade.value;
       this.animal.nome = this.nome.value;
       this.animal.porte = this.porte.value;
-      this.animal.idCidade = this.raca.value;
+      this.animal.idRaca = this.raca.value;
 
       this.animalService.cadastrar(this.animal).subscribe(result => {
-        debugger;
         this.cadastroForm.reset();
         this.toastr.success('Animal salvo com sucesso! Assim que alguém quiser adotar você receberá um e-mail!', 'Sucesso');
       }, (error) => {
