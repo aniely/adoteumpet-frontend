@@ -1,11 +1,22 @@
-<div class="card card-outline card-primary">
+<div class="card card-outline card-warning">
     <div class="card-header text-center">
-        <a [routerLink]="['/']" class="h1"><b>Admin</b>LTE</a>
+        <a [routerLink]="['/']" class="h1"><b>Adote um Pet</b></a>
     </div>
     <div class="card-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg">Faça seu cadastro</p>
 
         <form [formGroup]="registerForm" (ngSubmit)="registerByAuth()">
+            <div class="input-group mb-3">
+            <input
+            formControlName="nome"
+            type="nome"
+            class="form-control"
+            placeholder="Nome"
+        />  <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user"></span>
+            </div>
+        </div></div>
             <div class="input-group mb-3">
                 <input
                     formControlName="email"
@@ -24,7 +35,7 @@
                     formControlName="password"
                     type="password"
                     class="form-control"
-                    placeholder="Password"
+                    placeholder="Senha"
                 />
                 <div class="input-group-append">
                     <div class="input-group-text">
@@ -37,7 +48,7 @@
                     formControlName="retypePassword"
                     type="password"
                     class="form-control"
-                    placeholder="Retype password"
+                    placeholder="Repita a senha"
                 />
                 <div class="input-group-append">
                     <div class="input-group-text">
@@ -47,7 +58,7 @@
             </div>
             <div class="row">
                 <div class="col-7">
-                    <div class="icheck-primary">
+                    <!-- <div class="icheck-primary">
                         <input
                             type="checkbox"
                             id="agreeTerms"
@@ -57,7 +68,7 @@
                         <label for="agreeTerms">
                             I agree to the <a href="#">terms</a>
                         </label>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- /.col -->
                 <div class="col-5">
@@ -67,7 +78,7 @@
                         [loading]="isAuthLoading"
                         [disabled]="isFacebookLoading || isGoogleLoading"
                     >
-                        Register
+                        Cadastrar
                     </app-button>
                 </div>
                 <!-- /.col -->

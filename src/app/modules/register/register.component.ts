@@ -34,21 +34,28 @@ export class RegisterComponent implements OnInit, OnDestroy {
             'register-page'
         );
         this.registerForm = new FormGroup({
+            nome: new FormControl(null, Validators.required),
             email: new FormControl(null, Validators.required),
             password: new FormControl(null, [Validators.required]),
             retypePassword: new FormControl(null, [Validators.required])
         });
     }
 
-    async registerByAuth() {
-        if (this.registerForm.valid) {
-            this.isAuthLoading = true;
-           // await this.appService.registerByAuth(this.registerForm.value);
-            this.isAuthLoading = false;
-        } else {
-            this.toastr.error('Form is not valid!');
-        }
-    }
+     registerByAuth() {      
+         if (this.registerForm.valid) {
+             let senha = this.registerForm.get('password').value;
+             let senha2 = this.registerForm.get('retypePassword').value;
+             if (senha != senha2) {
+                 this.toastr.error('As senhas são diferentes!');
+             } else {
+                 this.isAuthLoading = true;
+                 this.appService.registerByAuth(this.registerForm.value);
+                 this.isAuthLoading = false;
+             }
+         } else {
+             this.toastr.error('Verifique os dados digitados!');
+         }
+     }
 
    
 

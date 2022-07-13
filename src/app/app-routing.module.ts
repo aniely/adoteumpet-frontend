@@ -18,16 +18,17 @@ const routes: Routes = [
     {
         path: '',
         component: MainComponent,
-       // canActivate: [AuthGuard],
-    //    canActivateChild: [AuthGuard],
+      //  canActivate: [NonAuthGuard],
+//canActivateChild: [AuthGuard],
         children: [
             {
                 path: 'profile',
                 component: ProfileComponent
             },
             {
-                path: 'blank',
-                component: CadastroComponent
+                path: 'cadastro',
+                component: CadastroComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: 'sub-menu-1',
@@ -41,8 +42,15 @@ const routes: Routes = [
                 path: '',
                 component: DashboardComponent
             }
+            
         ]
-    },
+    }, 
+    {
+             path: 'cadastro',
+         component: CadastroComponent,
+         canActivate: [AuthGuard]
+     },
+    
     {
         path: 'login',
         component: LoginComponent,

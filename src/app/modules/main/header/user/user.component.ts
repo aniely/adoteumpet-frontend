@@ -8,16 +8,18 @@ import {DateTime} from 'luxon';
     styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-    public user;
+    public usuarioLogado;
 
     constructor(private appService: AppService) {}
 
     ngOnInit(): void {
-        this.user = this.appService.user;
+       this.usuarioLogado = localStorage.getItem('token') ? true : false;
+          
     }
 
     logout() {
         this.appService.logout();
+        this.usuarioLogado = localStorage.getItem('token') ? true : false;
     }
 
     formatDate(date) {

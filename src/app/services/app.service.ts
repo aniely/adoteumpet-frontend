@@ -17,29 +17,32 @@ export class AppService {
         try {
             this.authService.login(email, password).subscribe(token => {
                 localStorage.setItem('token', token);
-                this.router.navigate(['/']);     
+                this.router.navigate(['/cadastro']);     
             });          
         } catch (error) {
             this.toastr.error(error.message);
         }
     }
 
-    /*async registerByAuth({email, password}) {
+    async registerByAuth({ nome, email, password }) {
         try {
-            const token = await Gatekeeper.registerByAuth(email, password);
-            localStorage.setItem('token', token);
-            await this.getProfile();
-            this.router.navigate(['/']);
+            this.authService.registrar(nome, email, password).subscribe(token => {
+                localStorage.setItem('token', token);
+                this.router.navigate(['/cadastro']);     
+            }, (error) => {
+                this.toastr.error('Verifique os dados digitados!', 'Erro');
+        
+              });
         } catch (error) {
             this.toastr.error(error.message);
         }
-    } */
+    } 
 
     
     logout() {
         localStorage.removeItem('token');
-        localStorage.removeItem('gatekeeper_token');
-        this.user = null;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/']);
     }
+
+   
 }

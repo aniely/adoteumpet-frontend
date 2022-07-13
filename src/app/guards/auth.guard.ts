@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {
     CanActivate,
-    CanActivateChild,
     ActivatedRouteSnapshot,
     RouterStateSnapshot,
     UrlTree,
@@ -13,30 +12,41 @@ import {AppService} from '@services/app.service';
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements CanActivate {
     constructor(private router: Router, private appService: AppService) {}
 
-    canActivate(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        return null;
+    // canActivate(
+    //     next: ActivatedRouteSnapshot,
+    //     state: RouterStateSnapshot
+    // ):
+    //     | Observable<boolean | UrlTree>
+    //     | Promise<boolean | UrlTree>
+    //     | boolean
+    //     | UrlTree {
+    //     return null;
+    // }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        if (localStorage.getItem('token')) {
+            // logged in so return true
+            return true;
+        }
+
+        // not logged in so redirect to login page with the return url
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
+        return false;
     }
 
-    canActivateChild(
-        next: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ):
-        | Observable<boolean | UrlTree>
-        | Promise<boolean | UrlTree>
-        | boolean
-        | UrlTree {
-        return this.canActivate(next, state);
-    }
+    // canActivateChild(
+    //     next: ActivatedRouteSnapshot,
+    //     state: RouterStateSnapshot
+    // ):
+    //     | Observable<boolean | UrlTree>
+    //     | Promise<boolean | UrlTree>
+    //     | boolean
+    //     | UrlTree {
+    //     return this.canActivate(next, state);
+    // }
 
  /*   async getProfile() {
         if (this.appService.user) {

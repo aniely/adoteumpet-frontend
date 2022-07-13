@@ -61,40 +61,24 @@
                 </div>
 
             </div>
-
-           <!-- <div class="row">
-                <div class="col-md-3">
-                    <div class="card"  *ngFor="let animal of animais">
-                        <img src="assets/img/cisso.jpeg" class="card-img-top rounded" alt="..." width="150"
-                            height="150">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{animal.nome}} | <small>Rio de Janeiro, RJ</small></h5>
-                            <br>
-                            <span class="badge rounded-pill bg-warning">Macho</span>&nbsp;
-                            <span class="badge rounded-pill bg-warning">Vive bem em apartamento</span>
-                            <br>
-                            <button type="button"
-                                class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
-                        </div>
-                    </div>
-                </div> -->
-                <div class="col-md-3">
-                    <div class="card"  *ngFor="let animal of animais">
+            <div class="row">
+                <div class="col-md-3" *ngFor="let animal of animais">
+                    <div class="card">
                         <img src="assets/img/ellora.jpeg" class="card-img-top rounded" alt="..." width="150"
                             height="150">
                         <div class="card-body">
                             <h5 class="card-title">{{animal.nome}} | <small>{{animal.cidade.nome}}, {{animal.cidade.estado.sigla}} </small></h5>
                             <br>
                             <span class="badge rounded-pill bg-warning">{{animal.genero == 'F' ? 'Fêmea' : 'Macho' }}</span>&nbsp;
-                            <span class="badge rounded-pill bg-warning">{{animal.descricao}}</span>&nbsp;
+                            <span class="badge rounded-pill bg-warning">{{animal.porte}}</span>&nbsp;
+                            <span class="badge rounded-pill bg-warning">{{animal.raca.nome}}</span>&nbsp;
                             <br>
                             <button type="button"
                                 class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
                         </div>
                     </div>
                 </div>
-
+            </div>
             </div>
         </div>
         <!-- /.content -->

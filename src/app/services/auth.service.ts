@@ -18,7 +18,13 @@ export class AuthService {
             .pipe(map(res => {
                 return res.headers.get("Authorization");
             }));
-
-
     }
+
+    registrar(nome: string, email: string, senha: string): Observable<any> {
+        return this.http.post<any>(this.baseURL + 'usuarios/cadastrar', {nome, email, senha },
+        { observe: 'response' as 'body'})
+        .pipe(map(res => {
+            return res.headers.get("Authorization");
+        }));
+}
 }

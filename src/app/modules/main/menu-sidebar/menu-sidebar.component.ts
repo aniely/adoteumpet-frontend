@@ -23,8 +23,8 @@ export const MENU = [
         path: ['/']
     },
     {
-        name: 'Blank',
-        path: ['/blank']
+        name: 'Cadastro',
+        path: ['/cadastro']
     },
     {
         name: 'Main Menu',
@@ -35,7 +35,7 @@ export const MENU = [
             },
 
             {
-                name: 'Blank',
+                name: 'Cadastro',
                 path: ['/sub-menu-2']
             }
         ]
