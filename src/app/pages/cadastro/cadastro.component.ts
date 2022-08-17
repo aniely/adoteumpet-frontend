@@ -15,6 +15,11 @@ import {
 } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import { Animal } from '@models/animal.model';
+import { Imagem } from '@models/imagem.model';
+ 
+import { from, Observable, of } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -24,6 +29,7 @@ import { Animal } from '@models/animal.model';
 
 export class CadastroComponent implements OnInit {
   isSubmited: boolean = false;
+  imageSrc: string;
   constructor(private animalService: AnimalService,
      private cidadeService: CidadeService,
       private estadoService: EstadoService, 
@@ -62,7 +68,9 @@ export class CadastroComponent implements OnInit {
     raca: new FormControl('', Validators.required),
     porte: new FormControl('', Validators.required),
     cor: new FormControl('', Validators.required),
-    descricao: new FormControl('', Validators.required)
+    descricao: new FormControl('', Validators.required),
+    file: new FormControl('', [Validators.required]),
+    fileSource: new FormControl('', [Validators.required])
 
 
   });
@@ -156,6 +164,9 @@ export class CadastroComponent implements OnInit {
   get especie(): any {
     return this.cadastroForm.get('especie');
   }
+  get f(){
+    return this.cadastroForm.controls;
+  }
 
   onChangeEstado(idEstado) {
     if (idEstado) {
@@ -187,11 +198,79 @@ export class CadastroComponent implements OnInit {
     }
   }
   
+  onFileChange(event) {
+    const reader = new FileReader();
+     
+    if(event.target.files && event.target.files.length) {
+      const [file] = event.target.files;
+      reader.readAsDataURL(file);
+     
+      reader.onload = () => {
+    
+        this.imageSrc = reader.result as string;
+        
+
+        this.cadastroForm.patchValue({
+          fileSource: reader.result
+        });
+    
+      };
+    }
+  }
+
+  // convertBase64ToFile(base64String, mimeType = 'image/png') {
+  //   if (!base64String) return of(null);
+  //   return from(fetch(`data:${mimeType};base64,${base64String}`))
+  //   .pipe(switchMap(result => from(result.arrayBuffer())),
+  //     map(bufferResult => {
+  //       const file = new File([bufferResult], '', { type: mimeType });
+ 
+  //       return file;
+  //     })
+  //   );
+  // }
+
+  // fileTotBase64(data :{ file: any, fileName?: string, docId?: number | string, splitResult?: boolean}) {
+  //   return new Observable(observer => {
+  //     const reader = new FileReader();
+  //     reader.onloadend = () => {
+  //       if (data.file['id'] == null) {
+          
+  //         const anexo = Object.assign(new Anexo(), {
+  //           arquivo: reader.result && typeof reader.result === 'string' ? data.splitResult ? reader.result.split(',')[1] : reader.result : null,
+  //           nome: data.fileName ? data.fileName : data.file.name,
+  //           tipo: data.file.type,
+  //           documento: {
+  //             id: data.docId
+  //           }
+  //         });
+  //         observer.next(anexo);
+  //       } else {
+  //         observer.next(null);
+  //       }
+  //       observer.complete();
+  //     }
+  //     reader.readAsDataURL(data.file);
+  //   })
+  // }
+
+   convertImg(){
+     debugger;
+     const byteCharacters = btoa( this.imageSrc);
+    // const byteNumbers = new Array(byteCharacters.length);
+    // for (let i = 0; i < byteCharacters.length; i++) {
+    //     byteNumbers[i] = byteCharacters.charCodeAt(i);
+    // }
+    //  const byteArray = new Uint8Array(byteNumbers);
+    //  const blob = new Blob([byteArray], {type: 'image/png'});
+     return byteCharacters;
+   }
 
   onFormSubmit() {
 
     this.isSubmited = true;
     if (this.cadastroForm.valid) {
+      let imagens: Imagem[] = [];
       this.animal.cor = this.cor.value;
       this.animal.descricao = this.descricao.value;
       this.animal.genero = this.sexo.value;
@@ -199,7 +278,11 @@ export class CadastroComponent implements OnInit {
       this.animal.nome = this.nome.value;
       this.animal.porte = this.porte.value;
       this.animal.idRaca = this.raca.value;
-
+      let imagem = new Imagem();
+      imagem.img =  this.convertImg();
+     
+      imagens.push(imagem);
+      this.animal.imagens = imagens;
       this.animalService.cadastrar(this.animal).subscribe(result => {
         this.cadastroForm.reset();
         this.toastr.success('Animal salvo com sucesso! Assim que alguém quiser adotar você receberá um e-mail!', 'Sucesso');

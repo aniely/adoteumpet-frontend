@@ -1,3 +1,5 @@
+import { Imagem } from "./imagem.model";
+
 export class Animal  {
   
     nome: string;
@@ -7,6 +9,7 @@ export class Animal  {
 	cor: string;
 	descricao: string;
 	idCidade: number;
+	imagens: Imagem[];
 
     constructor(
    

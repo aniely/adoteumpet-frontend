@@ -6,6 +6,8 @@ import { CidadeService } from '@services/cidade.service';
 import { EspecieService } from '@services/especie.service';
 import { Pesquisa } from '@models/pesquisa.model';
 import {ToastrService} from 'ngx-toastr';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
     selector: 'app-dashboard',
@@ -16,11 +18,15 @@ export class DashboardComponent implements OnInit {
   animais: any[] = new Array();
   cidades: any[] = new Array();
   especies: any[] = new Array();
+  title = 'appBootstrap';
+   
+  closeResult: string = '';
   
   constructor(private animalService: AnimalService, 
     private cidadeService: CidadeService,
      private especieService: EspecieService,
-     private toastr: ToastrService) {}
+     private toastr: ToastrService,
+     private modalService: NgbModal) {}
    
         public cidadeData:  Array<Select2OptionData>;
         public especieData: Array<Select2OptionData>;
@@ -35,6 +41,7 @@ export class DashboardComponent implements OnInit {
         ngOnInit() {
           this.animalService.buscarAnimais().subscribe(animais => {
             this.animais = animais;
+           this.animais =  this.animais.slice(0, 4);
           });
           this.cidadeService.buscarCidades().subscribe(cidades => {
             cidades.map(item => {
@@ -92,10 +99,32 @@ export class DashboardComponent implements OnInit {
         pesquisar(){
           this.animalService.pesquisar(this.pesquisa).subscribe(animais => {
             this.animais = animais;
+            console.log(animais);
           }); 
         }
 
-    
+        open(content:any) {
+          this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+          }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+          });
+        } 
+          
+        /**
+         * Write code on Method
+         *
+         * @return response()
+         */
+        private getDismissReason(reason: any): string {
+          if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+          } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+          } else {
+            return  `with: ${reason}`;
+          }
+        }
       }
       
  

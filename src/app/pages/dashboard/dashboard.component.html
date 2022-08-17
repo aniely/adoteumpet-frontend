@@ -61,6 +61,10 @@
                 </div>
 
             </div>
+
+   
+                
+           
             <div class="row">
                 <div class="col-md-3" *ngFor="let animal of animais">
                     <div class="card">
@@ -74,7 +78,7 @@
                             <span class="badge rounded-pill bg-warning">{{animal.raca.nome}}</span>&nbsp;
                             <br>
                             <button type="button"
-                                class="btn-sm btn-warning float-right font-weight-bold mt-1">Adotar</button>
+                                class="btn-sm btn-warning float-right font-weight-bold mt-1" (click)="open(mymodal)">Adotar</button>
                         </div>
                     </div>
                 </div>
@@ -82,4 +86,58 @@
             </div>
         </div>
         <!-- /.content -->
+     
+        <ng-template #mymodal let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Termo de compromisso</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+         <b> Declaro assumir o seguinte compromisso:</b>
+         <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>1.</b> Manter o animal adotado em boas condições de abrigo, higiene, alimentação e saúde, dando-lhe a devida atenção e cuidado;</li>
+            <li class="list-group-item"><b>2.</b> Levar o animal periodicamente ao médico veterinário, para vacinação e vermifugação e sempre que se fizer necessário, com a finalidade de mantê-lo saudável;</li>
+            <li class="list-group-item"><b>3.</b> Em hipótese alguma, tratar o animal com violência ou abandoná-lo;</li>
+            <li class="list-group-item"><b>4.</b> Se, por alguma razão, não puder mais criá-lo, entrar em contato imediato com a Adote um Pet para definição em conjunto de seu novo destino, em hipótese alguma entregando-o a outra pessoa sem prévio conhecimento e concordância da Adote um Pet.</li>
+             
+  
+        </ul>
+        <hr/>
+           <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+                Declaro que li e estou ciente das condições acima.
+            </label>
+          </div>
+          
+       
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Adotar</button>
+          </div>
+        </ng-template>
+
+
+        <!-- <ng-template #modalSucesso let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Parabéns</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+           <b> Você acabou de dar o primeiro passo para adoção do seu Pet, em breve o tutor entrará em contato para dar prosseguimento na adoção!</b>
+           
+          <hr/>
+             
+         
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Fechar</button>
+            </div>
+          </ng-template> -->
     </div>
+
+    

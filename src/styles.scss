@@ -10,6 +10,10 @@
 @import '~admin-lte/dist/css/adminlte.min.css';
 @import '~ngx-toastr/toastr.css';
 
+.modal-backdrop {
+    z-index: -1 !important; 
+  }
+
 .toast-bootstrap-compatibility-fix {
     opacity:1 !important;
   }

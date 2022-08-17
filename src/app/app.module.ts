@@ -34,6 +34,7 @@ import {DropdownComponent} from './components/dropdown/dropdown.component';
 import {DropdownMenuComponent} from './components/dropdown/dropdown-menu/dropdown-menu.component';
 import { NgSelect2Module } from 'ng-select2';
 //import { NgxMaskModule } from 'ngx-mask';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -78,6 +79,8 @@ import { FormsModule } from '@angular/forms';
         ReactiveFormsModule,
         NgSelect2Module,
         BrowserAnimationsModule,
+        NgbModule,
+
       //  NgxMaskModule.forRoot(),
 
         FormsModule,

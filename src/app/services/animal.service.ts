@@ -45,4 +45,16 @@ export class AnimalService {
     return this.http.post<any>(this.baseURL,  animal, options);
    }
 
+    adotar(idAminal: any): Observable<any> {
+        let params = new HttpParams();
+        params = params.set('idAminal', idAminal);
+
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+        });
+        let options = { headers: headers };
+        return this.http.post<any>(this.baseURL + '/adotar', { params }, options);
+    }
+
 }
