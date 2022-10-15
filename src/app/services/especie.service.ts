@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class EspecieService {
 
-    baseURL: string = "http://localhost:8082/especies";
+    baseURL: string = "https://apiadocao.azurewebsites.net/especies";
 
 
     constructor(private http: HttpClient) { }

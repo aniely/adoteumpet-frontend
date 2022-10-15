@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class RacaService {
 
-    baseURL: string = "http://localhost:8082/racas";
+    baseURL: string = "https://apiadocao.azurewebsites.net/racas";
 
 
     constructor(private http: HttpClient) { }
@@ -18,9 +18,9 @@ export class RacaService {
     buscarPorEspecie(idEspecie: number): Observable<any> {
         let params = new HttpParams();
         params = params.set('idEspecie', idEspecie);
-        
+
         return this.http.get<any[]>(this.baseURL + '/pesquisarPorEspecie', {params});
 
     }
-    
+
 }

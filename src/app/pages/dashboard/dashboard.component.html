@@ -4,14 +4,14 @@
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                  
+
                     <!-- <h1 class="m-0"> Adote um Pet</h1> -->
                 </div>
                 <!-- /.col
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Página inicial/</a></li>
-                    </ol> 
+                    </ol>
                 </div>  /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -42,9 +42,9 @@
                                     class="col-md-12" name="sexo"></ng-select2>
 
                             </div>
-                     
-                           
-                            
+
+
+
                             <div class="form-group  col-lg-3 col-md-4 col-sm-12 col-xs-12 mt-5">
                                 <label class="control-label">Cidade</label>
                                 <ng-select2 [data]="cidadeData" [placeholder]="'Selecione'" [options]="options" [(ngModel)]="pesquisa.idCidade"
@@ -62,14 +62,14 @@
 
             </div>
 
-   
-                
-           
+
+
+
             <div class="row">
-                <div class="col-md-3" *ngFor="let animal of animais">
-                    <div class="card">
-                        <img src="assets/img/ellora.jpeg" class="card-img-top rounded" alt="..." width="150"
-                            height="150">
+
+                <div class="col-md-3" *ngFor="let animal of animais; let i = index" [attr.data-index]="i">
+                  <div class="card">
+                         <img src="{{ animal.raca.especie.nome == 'Gato' ? 'assets/img/gato0.jpg' : 'assets/img/dog2.jpg'}}"  class="card-img-top rounded" alt="..." width="150" height="150">
                         <div class="card-body">
                             <h5 class="card-title">{{animal.nome}} | <small>{{animal.cidade.nome}}, {{animal.cidade.estado.sigla}} </small></h5>
                             <br>
@@ -78,7 +78,7 @@
                             <span class="badge rounded-pill bg-warning">{{animal.raca.nome}}</span>&nbsp;
                             <br>
                             <button type="button"
-                                class="btn-sm btn-warning float-right font-weight-bold mt-1" (click)="open(mymodal)">Adotar</button>
+                                class="btn-sm btn-warning float-right font-weight-bold mt-1" (click)="verificaLogin(mymodal, animal.id)">Adotar</button>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
             </div>
         </div>
         <!-- /.content -->
-     
+
         <ng-template #mymodal let-modal>
           <div class="modal-header">
             <h4 class="modal-title" id="modal-basic-title">Termo de compromisso</h4>
@@ -101,21 +101,21 @@
             <li class="list-group-item"><b>2.</b> Levar o animal periodicamente ao médico veterinário, para vacinação e vermifugação e sempre que se fizer necessário, com a finalidade de mantê-lo saudável;</li>
             <li class="list-group-item"><b>3.</b> Em hipótese alguma, tratar o animal com violência ou abandoná-lo;</li>
             <li class="list-group-item"><b>4.</b> Se, por alguma razão, não puder mais criá-lo, entrar em contato imediato com a Adote um Pet para definição em conjunto de seu novo destino, em hipótese alguma entregando-o a outra pessoa sem prévio conhecimento e concordância da Adote um Pet.</li>
-             
-  
+
+
         </ul>
         <hr/>
            <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="checkTermos"  [(ngModel)]="checkTermos" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
                 Declaro que li e estou ciente das condições acima.
             </label>
           </div>
-          
-       
+
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Adotar</button>
+            <button type="button" class="btn btn-warning"  [disabled]="!checkTermos" (click)="adotar()">Adotar</button>
           </div>
         </ng-template>
 
@@ -129,10 +129,10 @@
             </div>
             <div class="modal-body">
            <b> Você acabou de dar o primeiro passo para adoção do seu Pet, em breve o tutor entrará em contato para dar prosseguimento na adoção!</b>
-           
+
           <hr/>
-             
-         
+
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-warning" (click)="modal.close('Save click')">Fechar</button>
@@ -140,4 +140,3 @@
           </ng-template> -->
     </div>
 
-    

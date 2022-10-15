@@ -17,8 +17,8 @@ export class AppService {
         try {
             this.authService.login(email, password).subscribe(token => {
                 localStorage.setItem('token', token);
-                this.router.navigate(['/cadastro']);     
-            });          
+                this.router.navigate(['/']);
+            });
         } catch (error) {
             this.toastr.error(error.message);
         }
@@ -28,21 +28,21 @@ export class AppService {
         try {
             this.authService.registrar(nome, email, password).subscribe(token => {
                 localStorage.setItem('token', token);
-                this.router.navigate(['/cadastro']);     
+                this.router.navigate(['/cadastro']);
             }, (error) => {
                 this.toastr.error('Verifique os dados digitados!', 'Erro');
-        
+
               });
         } catch (error) {
             this.toastr.error(error.message);
         }
-    } 
+    }
 
-    
+
     logout() {
         localStorage.removeItem('token');
         this.router.navigate(['/']);
     }
 
-   
+
 }

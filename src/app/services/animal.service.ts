@@ -6,20 +6,20 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AnimalService {
 
-    baseURL: string = "http://localhost:8082/animais";
+    baseURL: string = "https://apiadocao.azurewebsites.net/animais";
 
 
     constructor(private http: HttpClient) { }
 
 
     buscarAnimais(): Observable<any> {
-       
+
         return this.http.get(this.baseURL);
     }
- 
-       
-      
- 
+
+
+
+
 
     pesquisar(pesquisa: Pesquisa): Observable<any[]> {
         let params = new HttpParams();
@@ -35,9 +35,8 @@ export class AnimalService {
         return this.http.get<any[]>(this.baseURL + '/pesquisar', {params});
    }
 
-   
+
    cadastrar(animal: any): Observable<any> {
-    
     let headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token') });
@@ -45,16 +44,13 @@ export class AnimalService {
     return this.http.post<any>(this.baseURL,  animal, options);
    }
 
-    adotar(idAminal: any): Observable<any> {
-        let params = new HttpParams();
-        params = params.set('idAminal', idAminal);
-
-        let headers = new HttpHeaders({
+    adotar(idAnimal: number): Observable<any> {
+       let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token')
         });
         let options = { headers: headers };
-        return this.http.post<any>(this.baseURL + '/adotar', { params }, options);
+        return this.http.post<any>(this.baseURL + '/adotar',  idAnimal, options);
     }
 
 }

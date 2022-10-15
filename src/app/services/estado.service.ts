@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class EstadoService {
 
-    baseURL: string = "http://localhost:8082/estados";
+    baseURL: string = "https://apiadocao.azurewebsites.net/estados";
 
 
     constructor(private http: HttpClient) { }

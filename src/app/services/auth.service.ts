@@ -6,7 +6,7 @@ import { map } from "rxjs/operators";
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-    baseURL: string = "http://localhost:8082/";
+    baseURL: string = "https://apiadocao.azurewebsites.net/";
 
 
     constructor(private http: HttpClient) { }
