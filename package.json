@@ -30,24 +30,9 @@
         "@angular/localize": "13.0.0",
         "@angular/platform-browser": "13.0.0",
         "@angular/platform-browser-dynamic": "13.0.0",
-        "@angular/router": "13.0.0",
-        "@ng-bootstrap/ng-bootstrap": "^12.1.2",
-        "@ng-select/ng-select": "^8.1.1",
-        "@sweetalert2/ngx-sweetalert2": "^11.0.0",
-        "@ttskch/select2-bootstrap4-theme": "^1.5.2",
-        "core-js": "3.8.0",
-        "gatekeeper-client-sdk": "0.4.2",
-        "jquery": "3.5.1",
-        "luxon": "2.1.1",
-        "ng-select2": "^1.4.1",
-        "ngx-custom-validators": "^11.0.1",
-        "ngx-mask": "^14.0.3",
-        "ngx-toastr": "14.1.4",
-        "process": "^0.11.10",
-        "rxjs": "6.6.7",
-        "select2-bootstrap-theme": "^0.1.0-beta.10",
-        "tslib": "2.0.3",
-        "zone.js": "~0.11.4"
+        "@angular/router": "13.0.0"
+
+
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "^13.3.9",
@@ -83,6 +68,23 @@
         "ts-node": "10.4.0",
         "tslint-config-prettier": "1.18.0",
         "tslint-plugin-prettier": "2.3.0",
-        "typescript": "4.4.4"
+        "typescript": "4.4.4",
+        "@sweetalert2/ngx-sweetalert2": "^11.0.0",
+        "@ttskch/select2-bootstrap4-theme": "^1.5.2",
+        "core-js": "3.8.0",
+        "gatekeeper-client-sdk": "0.4.2",
+        "jquery": "3.5.1",
+        "luxon": "2.1.1",
+        "ng-select2": "^1.4.1",
+        "ngx-custom-validators": "^11.0.1",
+        "ngx-mask": "^14.0.3",
+        "ngx-toastr": "14.1.4",
+        "process": "^0.11.10",
+        "rxjs": "6.6.7",
+        "select2-bootstrap-theme": "^0.1.0-beta.10",
+        "tslib": "2.0.3",
+        "zone.js": "~0.11.4",
+        "@ng-bootstrap/ng-bootstrap": "^12.1.2",
+        "@ng-select/ng-select": "^8.1.1"
     }
 }
