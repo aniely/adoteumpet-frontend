@@ -69,7 +69,9 @@
 
                 <div class="col-md-3" *ngFor="let animal of animais; let i = index" [attr.data-index]="i">
                   <div class="card">
-                         <img src="{{ animal.raca.especie.nome == 'Gato' ? 'assets/img/gato0.jpg' : 'assets/img/dog2.jpg'}}"  class="card-img-top rounded" alt="..." width="150" height="150">
+                         <img *ngIf="i < 2" src="{{ animal.raca.especie.nome == 'Gato' ? 'assets/img/gato0.jpg' : 'assets/img/dog2.jpg'}}"  class="card-img-top rounded" alt="..." width="150" height="150">
+                         <img src="assets/img/dog3.jpg"  *ngIf="i == 2" class="card-img-top rounded" alt="..." width="150" height="150">
+
                         <div class="card-body">
                             <h5 class="card-title">{{animal.nome}} | <small>{{animal.cidade.nome}}, {{animal.cidade.estado.sigla}} </small></h5>
                             <br>
